@@ -1,0 +1,9 @@
+__pycache__/
+*.egg-info/
+dist/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Local-only: experiment scripts, their output, and the reference captures.
+experiments/

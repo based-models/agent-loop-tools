@@ -1,0 +1,33 @@
+[project]
+name = "agentloop-tools"
+version = "0.1.0"
+description = "Tools for agentloop agents: native web search now; client search and coding tools next."
+requires-python = ">=3.12"
+dependencies = [
+    # NAMED, not a git URL: this library uses agentloop's public API only
+    # (tests/test_layering.py), so it depends on it like any stranger would.
+    "agentloop>=0.2.0,<0.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "mypy>=1.11", "ruff>=0.6", "build>=1.2"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+strict = true
+files = ["src", "tests"]
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
