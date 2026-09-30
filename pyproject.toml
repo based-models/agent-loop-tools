@@ -6,7 +6,10 @@ requires-python = ">=3.12"
 dependencies = [
     # NAMED, not a git URL: this library uses agentloop's public API only
     # (tests/test_layering.py), so it depends on it like any stranger would.
-    "agentloop>=0.2.0,<0.3.0",
+    # Distribution name is "based-models-agentloop" (the "agentloop" name on
+    # PyPI belongs to an unrelated project); the importable package is still
+    # `agentloop`.
+    "based-models-agentloop>=0.3.0,<0.4.0",
 ]
 
 [project.optional-dependencies]
