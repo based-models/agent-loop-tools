@@ -5,8 +5,11 @@ agents. The import name is `agentloop_tools`. Today: native web search with vali
 options, a domain policy, and helpers to read sources and citations back out of a transcript.
 
 ```bash
-pip install based-models-agentloop-tools
+pip install based-models-agentloop-tools "based-models-agentloop[anthropic]"
 ```
+
+Pick the provider extra you use (`anthropic`, `openai-compat`); the tools package itself
+needs only `based-models-agentloop`.
 
 ```python
 import os
