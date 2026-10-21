@@ -1,3 +1,6 @@
+.env
+.env.*
+!.env.example
 __pycache__/
 *.egg-info/
 dist/
@@ -11,3 +14,22 @@ experiments/
 # Internal notes and personal tooling: kept locally, not published
 .claude/
 DESIGN.md
+
+.coverage
+.coverage.*
+htmlcov/
+
+# notebooks and their checkpoints
+.ipynb_checkpoints/
+
+# build output and virtualenvs
+build/
+.venv/
+venv/
+
+# editor and OS files
+.DS_Store
+.idea/
+
+# personal editor settings
+.vscode/

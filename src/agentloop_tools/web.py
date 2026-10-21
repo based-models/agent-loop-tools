@@ -6,7 +6,7 @@ OpenAI's Responses `web_search`). `native_web_search` returns an agentloop
 refused at `Agent` construction by a provider that cannot run it.
 
 Client-side search -- your own code calling a search API -- is a separate,
-first-class choice, not a fallback for this one. It is on agentloop's BACKLOG.
+first-class choice, not a fallback for this one. It is planned for a later release.
 """
 
 from __future__ import annotations
