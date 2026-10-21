@@ -277,3 +277,9 @@ agentloop 0.4, 0.5 and 0.6.
 minor release may change the public API.
 
 Licensed under the Apache License 2.0.
+
+## Contributions
+
+This project is open source but does not accept external contributions or pull requests.
+To report a security vulnerability, see the
+[security policy](https://github.com/based-models/agent-loop-tools/security/policy).

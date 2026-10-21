@@ -28,6 +28,7 @@ dev = ["pytest>=8", "pytest-cov>=5", "mypy>=1.11", "ruff>=0.6", "build>=1.2", "t
 
 [project.urls]
 Repository = "https://github.com/based-models/agent-loop-tools"
+Documentation = "https://www.basedmodels.com/docs/agent-tools"
 
 [build-system]
 requires = ["hatchling"]
