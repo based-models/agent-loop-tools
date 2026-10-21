@@ -3,6 +3,13 @@
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: SemVer; while `0.x`, a
 minor release may change the public API.
 
+## [0.1.2]
+
+### Changed
+- Allow `based-models-agentloop` 0.6 (`>=0.4.0,<0.7.0`, was `<0.6.0`). The test suite, ruff and
+  mypy pass unchanged against agentloop 0.6.0 installed from PyPI.
+- README documentation links point at the published docs on basedmodels.com.
+
 ## [0.1.1]
 
 ### Changed

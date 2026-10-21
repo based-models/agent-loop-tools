@@ -269,7 +269,7 @@ the [hosted search guide](https://www.basedmodels.com/docs/agent-tools/native-we
 [sources and citations](https://www.basedmodels.com/docs/agent-tools/evidence),
 and [domain policies](https://www.basedmodels.com/docs/agent-tools/domain-policy).
 It builds on [agentloop](https://www.basedmodels.com/docs/agent-loop) and works with
-agentloop 0.4 and 0.5.
+agentloop 0.4, 0.5 and 0.6.
 
 ## Stability and license
 
