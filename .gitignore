@@ -7,3 +7,7 @@ dist/
 
 # Local-only: experiment scripts, their output, and the reference captures.
 experiments/
+
+# Internal notes and personal tooling: kept locally, not published
+.claude/
+DESIGN.md
