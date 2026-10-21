@@ -20,7 +20,7 @@ dependencies = [
     # (tests/test_layering.py), so it depends on it like any other consumer would.
     # The importable package is `agentloop`; the distribution is
     # `based-models-agentloop` (the bare name on PyPI is an unrelated project).
-    "based-models-agentloop>=0.4.0,<0.5.0",
+    "based-models-agentloop>=0.5.0,<0.6.0",
 ]
 
 [project.optional-dependencies]
