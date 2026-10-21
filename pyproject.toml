@@ -1,6 +1,6 @@
 [project]
 name = "based-models-agentloop-tools"
-version = "0.2.0"
+version = "0.1.1"
 description = "Tools for agentloop agents: native web search now; client search and coding tools next."
 readme = "README.md"
 requires-python = ">=3.12"
@@ -20,7 +20,7 @@ dependencies = [
     # (tests/test_layering.py), so it depends on it like any other consumer would.
     # The importable package is `agentloop`; the distribution is
     # `based-models-agentloop` (the bare name on PyPI is an unrelated project).
-    "based-models-agentloop>=0.5.0,<0.6.0",
+    "based-models-agentloop>=0.4.0,<0.6.0",
 ]
 
 [project.optional-dependencies]

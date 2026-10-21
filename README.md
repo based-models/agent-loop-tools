@@ -268,8 +268,8 @@ Read the [documentation](https://www.basedmodels.com/docs/agent-tools) for
 the [hosted search guide](https://www.basedmodels.com/docs/agent-tools/native-web-search),
 [sources and citations](https://www.basedmodels.com/docs/agent-tools/evidence),
 and [domain policies](https://www.basedmodels.com/docs/agent-tools/domain-policy).
-It builds on [agentloop](https://www.basedmodels.com/docs/agent-loop), which this version
-requires at `0.5.x`.
+It builds on [agentloop](https://www.basedmodels.com/docs/agent-loop) and works with
+agentloop 0.4 and 0.5.
 
 ## Stability and license
 

@@ -3,4 +3,4 @@
     from agentloop_tools.web import native_web_search
 """
 
-__version__ = "0.2.0"
+__version__ = "0.1.1"

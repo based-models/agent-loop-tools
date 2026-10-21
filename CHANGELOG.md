@@ -3,11 +3,12 @@
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: SemVer; while `0.x`, a
 minor release may change the public API.
 
-## [0.2.0]
+## [0.1.1]
 
 ### Changed
-- Requires `based-models-agentloop>=0.5.0,<0.6.0` (was `>=0.4.0,<0.5.0`), so it installs
-  alongside the current agentloop. The 44 tests pass against agentloop 0.5.0.
+- Allow `based-models-agentloop` 0.5 (`>=0.4.0,<0.6.0`, was `<0.5.0`). The test suite, ruff and
+  mypy pass unchanged against both 0.4.0 and 0.5.0; this package uses none of the API that
+  0.5.0 changed.
 
 ## [0.1.0]
 
