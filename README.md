@@ -39,8 +39,9 @@ pip install based-models-agentloop-tools "based-models-agentloop[openai-compat]"
 ```
 
 Native web search works with Anthropic Messages and the OpenAI Responses API. OpenAI uses
-Responses by default; it will not work when `OPENAI_API=completions` is selected. OpenRouter,
-Modal/vLLM, and other Chat Completions-compatible providers do not offer this hosted tool.
+Responses by default once `LLM_PROVIDER=openai` is selected; it will not work when
+`OPENAI_API=completions` is selected. OpenRouter, Modal/vLLM, and other Chat
+Completions-compatible providers do not offer this hosted tool.
 
 ## Quick start
 
@@ -54,19 +55,18 @@ from agentloop import Agent, Transcript, final_text
 from agentloop_tools.web import citations, native_web_search, sources
 
 search = native_web_search(
-    allowed_domains=["europa.eu"],
-    user_location={"country": "BE"},
+    allowed_domains=["python.org"],
 )
 
 transcript = Transcript()
 transcript.add_user_message(
-    "What does the EU AI Act say about general-purpose models?"
+    "Search the Python documentation and explain how to create a virtual environment."
 )
 
 with Agent.from_env(
-    os.environ,
+    {**os.environ, "LLM_PROVIDER": "openai"},
     tools=[search],
-    system="Use web search and cite your sources.",
+    system="Use web search before answering. Cite the pages you use.",
 ) as agent:
     agent.converse(transcript)
 
@@ -106,7 +106,7 @@ search = native_web_search(
 | `blocked_domains` | Exclude these domains and paths | Yes | Yes |
 | `user_location` | Approximate city, region, country, or timezone | Yes | Yes |
 | `max_uses` | Maximum searches per request | Yes | Ignored with a warning |
-| `dynamic_filtering` | Filter results with provider-side code | Yes | Ignored with a warning |
+| `dynamic_filtering` | Filter results with provider-side code (Claude 4.6+) | Yes | Ignored with a warning |
 | `search_context_size` | Amount of search content supplied to the model | Ignored with a warning | Yes |
 
 Unknown options are rejected. Unsupported domain restrictions are never silently dropped;
@@ -120,7 +120,8 @@ Domain filters use bare ASCII domains without a URL scheme:
 native_web_search(allowed_domains=["europa.eu", "example.com/reports"])
 ```
 
-- Pass either `allowed_domains` or `blocked_domains`, never both.
+- Pass either `allowed_domains` or `blocked_domains`, never both. Passing both raises
+  `ValueError`.
 - A rule includes the named host and its subdomains.
 - An optional path restricts the rule to that path prefix.
 - `*` is allowed within a path, but not in a hostname.
@@ -151,8 +152,9 @@ it, and not every search mode produces citations.
 ### Anthropic dynamic filtering
 
 `dynamic_filtering=False` is the default because Anthropic's basic search preserves
-citations. When enabled, Anthropic runs provider-side code to filter search results before
-they reach the model. This can help search-heavy requests, but it has important tradeoffs:
+citations. With Claude 4.6 or later, enabling it runs provider-side code to filter
+results before they reach the model. This can help search-heavy requests, but it has
+important tradeoffs:
 
 - `sources()` still returns the pages consulted.
 - `citations()` may be empty because the model reads the filtering program's output rather
@@ -172,14 +174,20 @@ import os
 from agentloop import Agent, Transcript, final_text
 from agentloop_tools.web import DomainPolicy
 
-policy = DomainPolicy.allow(["europa.eu", "oecd.org"])
-search = policy.native_web_search(search_context_size="high")
+policy = DomainPolicy.allow(["python.org"])
+search = policy.native_web_search()
 
 transcript = Transcript()
 before = len(transcript.messages)
-transcript.add_user_message("Summarize recent AI-policy guidance.")
+transcript.add_user_message(
+    "Search the Python documentation and explain how to create a virtual environment."
+)
 
-with Agent.from_env(os.environ, tools=[search]) as agent:
+with Agent.from_env(
+    {**os.environ, "LLM_PROVIDER": "openai"},
+    tools=[search],
+    system="Use web search before answering. Cite the pages you use.",
+) as agent:
     agent.converse(transcript)
 
 violations = policy.audit(transcript, since=before)
@@ -193,7 +201,7 @@ else:
 Construct policies with one of:
 
 ```python
-allowed = DomainPolicy.allow(["europa.eu", "oecd.org"])
+allowed = DomainPolicy.allow(["python.org"])
 blocked = DomainPolicy.block(["example.com", "example.org/private"])
 ```
 
@@ -250,13 +258,16 @@ Tool families are intentionally imported explicitly rather than re-exported from
 root. The package uses only `agentloop`'s public API and never reads configuration, API keys,
 or environment variables.
 
-This release provides provider-hosted web search. Client-side search—where your own Python
-tool calls a search API and controls results before the model sees them—is a separate feature
+This release provides provider-hosted web search. Client-side search, where your own Python
+tool calls a search API and controls results before the model sees them, is a separate feature
 and is not included yet.
 
 ## Documentation
 
-Full documentation and additional examples are coming soon.
+Read the [documentation](https://github.com/based-models/agent-loop-tools/tree/main/docs) for
+the [hosted search guide](https://github.com/based-models/agent-loop-tools/blob/main/docs/native-web-search.md),
+[sources and citations](https://github.com/based-models/agent-loop-tools/blob/main/docs/evidence.md),
+and [domain policies](https://github.com/based-models/agent-loop-tools/blob/main/docs/domain-policy.md).
 
 ## Stability and license
 
