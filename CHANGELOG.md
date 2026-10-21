@@ -3,7 +3,7 @@
 Format: [Keep a Changelog](https://keepachangelog.com/). Versioning: SemVer; while `0.x`, a
 minor release may change the public API.
 
-## [Unreleased]
+## [0.2.0]
 
 ### Changed
 - Requires `based-models-agentloop>=0.5.0,<0.6.0` (was `>=0.4.0,<0.5.0`), so it installs
