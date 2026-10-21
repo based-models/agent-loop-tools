@@ -264,10 +264,12 @@ and is not included yet.
 
 ## Documentation
 
-Read the [documentation](https://github.com/based-models/agent-loop-tools/tree/main/docs) for
-the [hosted search guide](https://github.com/based-models/agent-loop-tools/blob/main/docs/native-web-search.md),
-[sources and citations](https://github.com/based-models/agent-loop-tools/blob/main/docs/evidence.md),
-and [domain policies](https://github.com/based-models/agent-loop-tools/blob/main/docs/domain-policy.md).
+Read the [documentation](https://www.basedmodels.com/docs/agent-tools) for
+the [hosted search guide](https://www.basedmodels.com/docs/agent-tools/native-web-search),
+[sources and citations](https://www.basedmodels.com/docs/agent-tools/evidence),
+and [domain policies](https://www.basedmodels.com/docs/agent-tools/domain-policy).
+It builds on [agentloop](https://www.basedmodels.com/docs/agent-loop) and works with
+agentloop 0.4 and 0.5.
 
 ## Stability and license
 
